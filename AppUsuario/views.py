@@ -33,15 +33,7 @@ def login_index(request):
     return render(request,'index.html', {'url': url})
 
 
-    
-def mostrar_contact(request):
-    
-    return render(request,'contact.html')
 
-
-def cursoPost(request):
-    
-    return render(request,'Posts.html')
 
 
 @login_required
@@ -94,43 +86,9 @@ def buscador (request):
     return render (request, 'buscador.html', {'respuesta':respuesta})
     
 
-
-class PosteoList(ListView):
-
-    model = Posteo
-    template_name = 'mostrar_post.html'
-
-class PosteoDetail(DetailView):
-
-    model = Posteo
-    template_name = 'posteo_detalle.html' 
-
-
 def base(request):
 
     return render(request,'base.html')
-
-
-
-class PosteoDeleteView(LoginRequiredMixin, DeleteView):
-    model = Posteo
-    template_name = 'post_confirm_delete.html' 
-    success_url = '/mostrarPost'
-    
-
-class PosteoUpdateView(LoginRequiredMixin, UpdateView):
-    model = Posteo
-    template_name = 'modificar_post.html' 
-    success_url = '/mostrarPost'
-    fields =['titulo', 'subtitulo','texto','nombre', 'email']
-    
-
-class SignUpView(CreateView):
-    form_class = SignUpForm
-    success_url = reverse_lazy('index')
-    template_name = "registro.html"
-
-
 
 def Perfil_usuario(request):
 
@@ -167,6 +125,51 @@ def editar_usuario(request):
             'usuario': usuario
             })
 
+def about(request):
+
+    return render(request,'about.html')
+    
+
+def accountSettings(request):
+
+    return render(request,'account_settings.html')
+
+
+class PosteoList(ListView):
+
+    model = Posteo
+    template_name = 'mostrar_post.html'
+
+class PosteoDetail(DetailView):
+
+    model = Posteo
+    template_name = 'posteo_detalle.html' 
+
+
+
+
+class PosteoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Posteo
+    template_name = 'post_confirm_delete.html' 
+    success_url = '/mostrarPost'
+    
+
+class PosteoUpdateView(LoginRequiredMixin, UpdateView):
+    model = Posteo
+    template_name = 'modificar_post.html' 
+    success_url = '/mostrarPost'
+    fields =['titulo', 'subtitulo','texto','nombre', 'email']
+    
+
+class SignUpView(CreateView):
+    form_class = SignUpForm
+    success_url = reverse_lazy('index')
+    template_name = "registro.html"
+
+
+
+
+
 class AdminLoginView(LoginView):
 
     template_name = 'login.html'
@@ -179,10 +182,5 @@ class AdminLogoutView(LogoutView):
     template_name = 'logout.html'
     success_url = reverse_lazy('index')
 
-def about(request):
 
-    return render(request,'about.html')
 
-def accountSettings(request):
-
-    return render(request,'account_settings.html')
