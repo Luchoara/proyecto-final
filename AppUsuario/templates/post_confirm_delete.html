@@ -1,0 +1,16 @@
+
+{% load static %}
+
+{% block CodigoDinamico %}
+
+<form method = 'post'> {% csrf_token %}
+
+    <h1> Estas seguro que desea eliminar este post {{object}} ?? </h1>
+
+    <button type = 'submit' class="btn btn-danger" >confirmar</button>
+    <button>
+            <a href="{% url 'mostrarpost'  %}">volver</a>
+        </button>
+</form>
+
+{% endblock %} 

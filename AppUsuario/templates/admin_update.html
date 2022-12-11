@@ -1,0 +1,45 @@
+{% extends 'test.html' %}
+{% load static %}
+{% csrf_token %}
+
+
+{% block codigoDinamico %}
+
+
+<table>
+    <style>
+        .profile-pic{
+            max-width: 200px;
+            max-height:2    00px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+    
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <hr>
+                <h3 style="text-align: center">Configuracion de cuenta</h3>
+                <hr>
+                <img class="profile-pic" src="{{request.user.Avatar.imagen.url}}" >
+                <a class="btn btn-warning" href="{% url 'base' %}"> &#8592; Volver al Perfil</a>
+            
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body">
+                
+                <form method="POST" action="" enctype="multipart/form-data">
+                
+                    {{form.as_p}}
+            
+                <input class="btn btn-primary" type="submit" name="Update Information">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

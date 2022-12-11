@@ -1,0 +1,14 @@
+
+<h1>Detalle del posteo: </h1>
+
+    <p>Id: {{posteo.id}}</p>
+    <p>Titulo del Posteo: {{posteo.titulo}}</p>
+    <p>Subtitulo del Posteo: {{posteo.subtitulo}}</p> 
+    <p>Texto del Posteo: {{posteo.texto}}</p>
+    <p>Autor: {{posteo.nombre}}</p>
+    <p>Mail: {{posteo.email}}</p>
+    <p>Fecha: {{posteo.fecha}}</p>
+
+        <button>
+            <a href="{% url 'mostrarpost'  %}">volver</a>
+        </button>

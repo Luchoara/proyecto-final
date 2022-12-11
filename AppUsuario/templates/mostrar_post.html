@@ -1,0 +1,36 @@
+{% extends 'test.html' %}
+
+{% load static %}
+
+{% block CodigoDinamico %}
+
+    <table>
+        {% for post in object_list %}
+
+            <ul>
+                <li><p style="color: white">{{post}}</p></li>
+
+
+
+
+
+                        <button>
+                            <a href="{% url 'Detail' post.id %}">Mostrar detalles</a>
+                        </button>
+
+                        <button>
+                            <a href="{% url 'Eliminar' post.id %}">Eliminar</a>
+                        </button>
+
+                        <button>
+                            <a href="{% url 'Actualizar' post.id %}">Actualizar</a>
+                        </button>
+        
+
+                </li>
+            </ul>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}
