@@ -32,17 +32,6 @@ class SignUpForm(UserCreationForm):
         help_texts = {k:'' for k in fields} 
 
 
-    def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
-        user.username = self.cleaned_data['username']
-        user.password1 = self.cleaned_data['password1']
-        user.password2 = self.cleaned_data['password2']
-        user.email = self.cleaned_data['email']
-    
-        
-        if commit:
-            user.save()
-
 class UserEditForm(UserCreationForm):
     
     class Meta:
