@@ -1,0 +1,26 @@
+{% extends 'Base.html' %}
+
+{% load static %}
+
+{% block ContenidoDinamico %}
+
+<div class="container mt-5">
+
+    <form  method="post" class="form-group mb-5" style="text-align: justify" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <table class="table">
+
+        {{miAvatar.as_p}}
+
+        </table>
+        <p></p>
+        <input type="submit" value="Guardar cambios" class="btn btn-primary btn-sm">
+        <a class="btn btn-primary btn-sm" href="{% url 'AppUsers:Profile' %}">Cancelar</a>
+
+    </form>
+</div>
+
+{% endblock %}
+

@@ -20,11 +20,11 @@ def mostrar_index(request):
 
 def login_index(request):
 
-    imagen = Avatar.objects.filter(user=request.user.id)
+    avatar = Avatar.objects.filter(user=request.user.id)
 
-    if imagen.exists():
+    if avatar.exists():
 
-            url = imagen[0].imagen.url #hay un problema aqui
+            url = avatar[0].imagen.url #hay un problema aqui
 
     else:
 

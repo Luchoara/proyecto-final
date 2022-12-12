@@ -32,14 +32,14 @@ class SignUpForm(UserCreationForm):
         help_texts = {k:'' for k in fields} 
 
 
-   # def save(self, commit=True):
+    # def save(self, commit=True):
     #    user = super(RegistrationForm, self).save(commit=False)
     #    user.username = self.cleaned_data['username']
     #    user.last_name = self.cleaned_data['last_name']
     #    user.email = self.cleaned_data['email']
     
         
-     #   if commit:
+    #   if commit:
     #        user.save()
 
 class UserEditForm(UserCreationForm):
@@ -51,10 +51,6 @@ class UserEditForm(UserCreationForm):
             'email',
             'password1',
             'password2',
-        
-            
-            
-            
         ]
         help_texts = {k:'' for k in fields} 
 
@@ -65,6 +61,9 @@ class CuentaUsuarioForm(ModelForm):
         fields =  '__all__'
         exclude = [ 'user'] 
 
+class avatarForm(ModelForm):
+
+    avatar_img = forms.ImageField()
 
 
 
