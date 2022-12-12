@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block titulo %}
-	<title>Admin Update</title>
-{% endblock %}
+	<title>Post Update</title>
+	{% endblock %}
 
 
 
@@ -79,26 +78,20 @@
     
     <br>
     <div class="row">
-        <div class="col-md-3">
-            <div class="card card-body">
-                <hr>
-                <h3 style="text-align: center">Configuracion de cuenta</h3>
-                <hr>
-                <img class="profile-pic" src="{{request.user.Avatar.imagen.url}}" >
-                <a class="btn btn-warning" href="{% url 'base' %}"> &#8592; Volver al Perfil</a>
-            
-            </div>
-        </div>
         <div class="col-md-9">
             <div class="card card-body">
                 
                 <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
-                
-                    {{form.as_p}}
+                    
+                    <h3 style="text-align: center">Actualizar Post</h3>
+                    <hr>
+                    <h3 style="text-align: center">{{form.as_p}}</h3>
+                    
             
                 <input class="btn btn-primary" type="submit" name="Update Information">
                 </form>
             </div>
+            <a class="btn btn-warning" href="{% url 'index' %}"> &#8592; Volver al Inicio</a>
         </div>
     </div>
 

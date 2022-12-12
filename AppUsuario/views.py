@@ -147,19 +147,18 @@ class PosteoDetail(DetailView):
     template_name = 'posteo_detalle.html' 
 
 
-
-
 class PosteoDeleteView(LoginRequiredMixin, DeleteView):
     model = Posteo
     template_name = 'post_confirm_delete.html' 
-    success_url = '/mostrarPost'
+    success_url = '/mostrarpost'
     
 
 class PosteoUpdateView(LoginRequiredMixin, UpdateView):
     model = Posteo
     template_name = 'modificar_post.html' 
-    success_url = '/mostrarPost'
+    success_url = '/mostrarpost'
     fields =['titulo', 'subtitulo','texto','nombre', 'email']
+    print('posteomostrado')
     
 
 class SignUpView(CreateView):
