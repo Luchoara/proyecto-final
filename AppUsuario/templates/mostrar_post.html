@@ -1,14 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
 
+	{% block titulo %}
+	<title>Lista de Posts</title>
+	{% endblock %}
+<style>
+
+button {
+    border-radius:  7px;
+    border: 0;
+    background: #191414;
+    color: #fff;
+    padding:  10px;
+    margin:  0 0 3px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1Db954;
+}
+
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
 
 {% block codigoDinamico %}
-
-
-
 
 
         </div>
@@ -47,11 +65,17 @@
                     </tr>
                     
                 {% endfor %}
+                
+                <td>
+                    <div class="d-flex justify-content-center h-100">
+                        <button>
+                            <a href="{% url 'index' %}">Volver al Index</a>
+                        </button>
+                    </div>
+                </td>
             </tbody>
+
         </table>
-
-
-    
 
 {% endblock %}
 

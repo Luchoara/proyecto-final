@@ -1,11 +1,5 @@
 {% load static %}
 
-    {% for i in post %}
-
-        <li><p style="color: white">posteo de: {{i}} </p></li>
-        
-    {% endfor %}
-
 
     <!--  caja contenedora  -->
 
@@ -72,6 +66,12 @@
 
 	</style>
 </head>
+
+{% for i in post %}
+
+<li><p style="color: white">posteo de: {{i}} </p></li>
+
+{% endfor %}
 
     <body>
         <div class="container h-100">
