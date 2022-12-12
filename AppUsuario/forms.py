@@ -29,16 +29,18 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
-        
-    def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
-        user.username = self.cleaned_data['username']
-        user.last_name = self.cleaned_data['last_name']
-        user.email = self.cleaned_data['email']
+        help_texts = {k:'' for k in fields} 
+
+
+   # def save(self, commit=True):
+    #    user = super(RegistrationForm, self).save(commit=False)
+    #    user.username = self.cleaned_data['username']
+    #    user.last_name = self.cleaned_data['last_name']
+    #    user.email = self.cleaned_data['email']
     
         
-        if commit:
-            user.save()
+     #   if commit:
+    #        user.save()
 
 class UserEditForm(UserCreationForm):
     

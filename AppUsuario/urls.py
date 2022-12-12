@@ -21,7 +21,8 @@ urlpatterns = [
     path('editar_usuario/', views.editar_usuario, name='Editar usuario'),
     path('about/', views.about, name='About'),
     path('cuenta/', views.accountSettings, name='Cuenta'),
-
+    path('account_detail/', views.account_detail, name='account_detail'),
 
     path('test/', views.test, name='test'),
+    
 ]

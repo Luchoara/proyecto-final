@@ -150,7 +150,7 @@
                         
                       {% if request.user.is_authenticated %}
                         <li> <a href="{% url 'Logout'%}">Logout</a> </li>
-                        <li> <a href="{% url 'Cuenta'%}">Cuenta</a> </li>
+                        <li> <a href="{% url 'account_detail'%}">Detalle Cuenta</a> </li>
                       {% else %}
                         <li> <a href="{% url 'Login'%}">Login</a> </li>
                       

@@ -6,7 +6,7 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import PosteoForm, SignUpForm, UserEditForm, CuentaUsuarioForm
+from .forms import PosteoForm, SignUpForm, UserEditForm
 from .models import Posteo, Avatar 
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
@@ -78,12 +78,12 @@ def buscador(request):
         titulo  = request.GET['titulo']
         
         post = Posteo.objects.filter(titulo__icontains=titulo)
-        print('busca')
+        
         return render(request, 'buscador.html',{'post':post})
         
     else:
         respuesta = print('no hay datos')
-        print('nada')
+        
     return render (request, 'buscador.html', {'respuesta':respuesta})
     
 
@@ -158,16 +158,13 @@ class PosteoUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'modificar_post.html' 
     success_url = '/mostrarpost'
     fields =['titulo', 'subtitulo','texto','nombre', 'email']
-    print('posteomostrado')
     
 
 class SignUpView(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('index')
     template_name = "registro.html"
-
-
-
+    print('signup')
 
 
 class AdminLoginView(LoginView):
@@ -190,3 +187,6 @@ def test(request):
 
     return render(request,'test.html')
 
+def account_detail(request):
+
+    return render(request,'account_detail.html')

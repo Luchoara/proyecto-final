@@ -1,14 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block titulo %}
-	<title>Admin Update</title>
-{% endblock %}
-
+{% csrf_token %}
 
 
 {% block codigoDinamico %}
-
 
 
 <table>
@@ -36,9 +31,13 @@
         <div class="col-md-9">
             <div class="card card-body">
                 
-                <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+                <form method="POST" action="" enctype="multipart/form-data">
                 
-                    {{form.as_p}}
+                    {{user.username}}<br>
+					{{user.last_name}}<br>
+					{{user.email}}<br>
+					{{user.Avatar}}<br>
+
             
                 <input class="btn btn-primary" type="submit" name="Update Information">
                 </form>
