@@ -7,9 +7,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PosteoForm, SignUpForm, UserEditForm
-from .models import Posteo, Avatar 
+from .models import Posteo, Usuario
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
+from .forms import CuentaUsuarioForm, Avatar_Form
 
 
 
@@ -130,11 +130,14 @@ def about(request):
 
     return render(request,'about.html')
     
-
+@login_required
 def accountSettings(request):
+    user = request.user.Usuario
+    form = CuentaUsuarioForm (instance = user )
+    context = {'form': form}
+    return render(request,'account_settings.html',context = context)
 
-    return render(request,'account_settings.html')
-
+    print ('hola')
 
 class PosteoList(ListView):
 
@@ -190,3 +193,45 @@ def test(request):
 def account_detail(request):
 
     return render(request,'account_detail.html')
+
+def add_avatar(request):
+
+    if request.method == 'POST':
+
+        miAvatar = Avatar_Form(request.POST, request.FILES)
+
+        if miAvatar.is_valid():
+
+            usuario = request.user
+
+            avatar = Usuario.objects.filter(user=usuario)
+
+            file = miAvatar.cleaned_data
+
+            if len(avatar) > 0:
+
+                avatar = avatar[0]
+                avatar.imagen = file['img']
+                avatar.save()
+
+                avatar = Usuario.objects.filter(user=request.user)
+
+                img = avatar[0].imagen.url
+
+            else:
+
+                avatar = usuario(user=usuario, imagen=miAvatar.cleaned_data['img'])
+                avatar.save()
+
+                img = None
+
+        #return render(request, 'AppBlog/templates/AppBlog/inicio.html', {'img':img})
+        return redirect('account_detail.html')
+
+    else:
+
+        miAvatar = Avatar_Form()
+
+        img = None
+        
+        return render(request, 'addimagen.html', {'miAvatar': miAvatar, 'img': img})

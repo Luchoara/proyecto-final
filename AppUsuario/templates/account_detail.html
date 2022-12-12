@@ -31,12 +31,12 @@
         <div class="col-md-9">
             <div class="card card-body">
                 
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="" enctype="multipart/form-data"> {% csrf_token %}
                 
                     {{user.username}}<br>
 					{{user.last_name}}<br>
 					{{user.email}}<br>
-					{{user.Avatar}}<br>
+					{{user.imagen.url}}<br>
 
             
                 <input class="btn btn-primary" type="submit" name="Update Information">

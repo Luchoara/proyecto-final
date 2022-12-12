@@ -5,6 +5,8 @@ import datetime
 from django.forms import ModelForm
 from django import forms
 
+from AppUsuario.models import Usuario
+
 class PosteoForm(forms.Form):
     
     titulo = forms.CharField(max_length=40)
@@ -47,15 +49,12 @@ class UserEditForm(UserCreationForm):
 class CuentaUsuarioForm(ModelForm):
     
     class Meta:
-        model = User
+        model = Usuario
         fields =  '__all__'
         exclude = [ 'user'] 
 
-class avatarForm(ModelForm):
-
-    avatar_img = forms.ImageField()
-
-
+class Avatar_Form (forms.Form):
+    imagen = forms.ImageField()
 
 
 

@@ -3,5 +3,5 @@ from AppUsuario.models import *
 
 # Register your models ahere.
 admin.site.register(Posteo)
-admin.site.register(Avatar)
+admin.site.register(Usuario)
 # Register your models here.

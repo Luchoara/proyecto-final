@@ -1,9 +1,9 @@
 # Django #
 *.log
-*.pot
+#*.pot
 *.pyc
 ## __pycache__ ## VERIFICAR!!!
-db.sqlite3
+#db.sqlite3
 media
 
 # Backup files # 
