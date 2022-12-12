@@ -71,18 +71,19 @@ def buscar_post(request):
 
 
 
-def buscador (request):
-    if request.GET.get ('titulo', False):
+def buscador(request):
 
-        titulo  = request.GET ['titulo']
+    if request.GET.get('titulo', False):
+
+        titulo  = request.GET['titulo']
         
         post = Posteo.objects.filter(titulo__icontains=titulo)
-
-        return render (request, 'buscador.html',{'post':post})
+        print('busca')
+        return render(request, 'buscador.html',{'post':post})
         
     else:
-        respuesta = 'no hay datos'
-    
+        respuesta = print('no hay datos')
+        print('nada')
     return render (request, 'buscador.html', {'respuesta':respuesta})
     
 
@@ -183,4 +184,10 @@ class AdminLogoutView(LogoutView):
     success_url = reverse_lazy('index')
 
 
+
+### <----->
+
+def test(request):
+
+    return render(request,'test.html')
 

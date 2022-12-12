@@ -139,9 +139,6 @@
                       
                       {% endif %}
 
-                        <li> <a href="{% url 'buscar' %}">Buscar Posts</a> </li>
-                        
-
                       {% if request.user.is_authenticated %}
                         
                         <li> <a href="{% url 'Editar usuario'%}">Modif usuario</a> </li>
@@ -156,9 +153,9 @@
                         <li> <a href="{% url 'Cuenta'%}">Cuenta</a> </li>
                       {% else %}
                         <li> <a href="{% url 'Login'%}">Login</a> </li>
-                       
-                      {% endif %}
                       
+                      {% endif %}
+                      <li> <a class="last_manu" href="{% url 'buscar' %}"><img src={% static "images/search_icon.png" %} alt="#" /></a> </li>
                     </ul>
                   </nav>
                 
@@ -204,6 +201,8 @@
               </div>
             </div>
           </div>
+        </div>
+
           <div class="carousel-item">
 
             <div class="container ">
@@ -240,18 +239,21 @@
                     </div>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
-        </div>
+        
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </a>
     
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-      </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
       
-    </a>
+      
+    
   </div>
     
   
@@ -296,117 +298,10 @@
 
 
 
-<!-- Gallery -->
-<!--
-  
-<div id="gallery" class="Gallery">
-  <div class="container"> 
-    <div class="row display_boxflex">
-      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-        <div class="row">
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margi_bott">
-            <div class="Gallery_img">
-              <figure><img src={% static "images/Gallery1.jpg"%} alt="#"/></figure>
-            </div>
-            <div class="hover_box">
-            
-              <ul class="icon_hu">
-                <h3>Music night</h3>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margi_bott">
-            <div class="Gallery_img">
-              <figure><img src={% static "images/Gallery2.jpg"%} alt="#"/></figure>
-            </div>
-            <div class="hover_box">
-            
-              <ul class="icon_hu">
-                <h3>Music night</h3>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margi_bott1">
-            <div class="Gallery_img">
-              <figure><img src={% static "images/Gallery3.jpg"%} alt="#"/></figure>
-            </div>
-            <div class="hover_box">
-            
-              <ul class="icon_hu">
-                <h3>Music night</h3>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-            <div class="Gallery_img">
-              <figure><img src={% static "images/Gallery4.jpg"%} alt="#"/></figure>
-            </div>
-            <div class="hover_box">
-            
-              <ul class="icon_hu">
-                <h3>Music night</h3>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-                <li><a href="#"><img src={% static "icon/h.png"%} alt="#"/></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-        <div class="Gallery_text">
-          <div class="titlepage">
-            <h2>Gallery</h2>
-          </div>
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to usin</p>
-          <a href="Javascript:void(0)">Read More</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
---> 
-<!-- end Gallery --> 
-
-
-
 
     <!--  footer -->
     <footr>
-      <div class="footer ">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-          
-            
-            
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
-                          <ul class="social_link">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                          </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-              <div class="container">
-              <div class="copyright">
-              
-                  <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free  html Templates</a></p>
-                </div>
-              </div>
-            </div>
-          </footr>
+    </footr>
           <!-- end footer -->
           <!-- Javascript files-->
           <script src={% static "js/jquery.min.js"%}></script>

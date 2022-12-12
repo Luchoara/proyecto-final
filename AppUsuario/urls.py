@@ -9,9 +9,8 @@ urlpatterns = [
     path('login_index', views.login_index, name='logIndex'),
     
     path('crear_post/', views.crear_post, name='crear'),
-    
     path('buscador/', views.buscador, name='buscar'),
-    path('mostrarPost/', views.PosteoList.as_view(), name='mostrarpost'),
+    path('mostrarpost/', views.PosteoList.as_view(), name='mostrarpost'),
     path('PosteoDetail/<pk>', views.PosteoDetail.as_view(), name='Detail'),
     path('base/', views.base, name='base'),
     path('post_confirm_delete/<pk>', views.PosteoDeleteView.as_view(), name='Eliminar'),
@@ -23,4 +22,6 @@ urlpatterns = [
     path('about/', views.about, name='About'),
     path('cuenta/', views.accountSettings, name='Cuenta'),
 
+
+    path('test/', views.test, name='test'),
 ]

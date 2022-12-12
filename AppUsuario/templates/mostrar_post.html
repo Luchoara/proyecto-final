@@ -1,36 +1,58 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block CodigoDinamico %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-    <table>
-        {% for post in object_list %}
 
-            <ul>
-                <li><p style="color: white">{{post}}</p></li>
+{% block codigoDinamico %}
 
 
 
 
 
-                        <button>
-                            <a href="{% url 'Detail' post.id %}">Mostrar detalles</a>
-                        </button>
+        </div>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Texto</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in object_list %}
+                    <tr>
+                        <th scope="row">{{post.id}}</th>
+                        <td>{{post.titulo}}</td>
+                        <td>{{post.texto}}</td>
+                        <td>{{post.fecha}}</td>
+                        
+                        <td>
+                            <button>
+                                <a href="{% url 'Detail' post.id %}">Mostrar detalles</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button>
+                                <a href="{% url 'Eliminar' post.id %}">Eliminar</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button>
+                                <a href="{% url 'Actualizar' post.id %}">Actualizar</a>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
 
-                        <button>
-                            <a href="{% url 'Eliminar' post.id %}">Eliminar</a>
-                        </button>
 
-                        <button>
-                            <a href="{% url 'Actualizar' post.id %}">Actualizar</a>
-                        </button>
-        
-
-                </li>
-            </ul>
-
-        {% endfor %}
-    </table>
+    
 
 {% endblock %}
+
+
