@@ -1,23 +1,22 @@
-{% extends 'test.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
 
-{% load static %}
 
-{% block ContenidoDinamico %}
-
-<div class="container mt-5">
-
-    <form  method="get" class="form-group mb-5" style="text-align: justify" enctype="multipart/form-data"> {% csrf_token %}
-
-        {{miAvatar.as_p}}
+        imagen2: <img src="/Users/lucho/Documents/Python/proyectos/Proyecto-final/media/abuelo_simpson_QxLkLwQ.jpg">
+    
         
-        <p>{{''}}</p>
-        <p>{{img}}</p>
-        <p>{{''}}</p>
-        <input type="submit" value="Guardar cambios" class="btn btn-primary btn-sm">
-        <a class="btn btn-primary btn-sm" href="{% url 'index' %}">Cancelar</a>
+    </div>
+    
+    
+</body>
+</html>
 
-    </form>
-</div>
-
-{% endblock %}
 

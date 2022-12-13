@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PosteoForm, SignUpForm, UserEditForm
 from .models import Posteo, Usuario, Avatar
 from django.urls import reverse_lazy
-from .forms import UserCreationForm, Avatar_Form
+from .forms import Avatar_Form, CuentaUsuarioForm
 
 
 
@@ -58,9 +58,9 @@ def crear_post(request):
     return render(request,'Posts.html',{'posteo':posteo})
 
 
-def buscar_post(request):
+#def buscar_post(request):
 
-    return render(request,'buscador.html')
+#    return render(request,'buscador.html')
 
 
 
@@ -83,10 +83,6 @@ def buscador(request):
 def base(request):
 
     return render(request,'base.html')
-
-def Perfil_usuario(request):
-
-    usuario = request.user
 
     
 @login_required
@@ -149,11 +145,10 @@ class PosteoUpdateView(LoginRequiredMixin, UpdateView):
     
 
 class SignUpView(CreateView):
+
     form_class = SignUpForm
     success_url = reverse_lazy('index')
     template_name = "registro.html"
-    print('signup')
-
 
 class AdminLoginView(LoginView):
 
@@ -176,14 +171,27 @@ def test(request):
     return render(request,'test.html')
 
 def Cuenta_Detail(request):
-    return render (request, 'account_detail.html')
+    
+    usuario = Usuario.objects.all()
 
-#class CuentaDetailView(DetailView):
-    #model= Usuario
-    #template_name = 'account_detail.html'
+    avatar = Avatar.objects.filter(user=request.user.id)
+
+    if avatar.exists():
+
+            url = avatar[0].imagen.url
+            print('usuarioExiste')
+    else:
+
+            url = None
+
+    return render(request, 'account_detail.html', {'usuario': usuario, 'url': url})
+    
     
 
 
+class AvatarView(TemplateView):
+
+    template_name = 'add_imagen.html'
 
 
 def add_avatar(request):

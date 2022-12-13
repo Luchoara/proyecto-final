@@ -12,6 +12,14 @@
 
 <body>
 	
+	{% for post in object_list %}
+                    <tr>
+                        <th scope="row">{{post.id}}</th>
+                        <td>{{post.titulo}}</td>
+                        <td>{{post.texto}}</td>
+                        <td>{{post.imagen}}</td>
+                        
+                        <td>
 	{% block codigoDinamico %}
 
 	{% endblock %}

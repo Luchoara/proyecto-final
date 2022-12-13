@@ -148,7 +148,7 @@
                       {% if request.user.is_authenticated %}
                         
                         <li> <a href="{% url 'Editar usuario'%}">Modif usuario</a> </li>
-                        <li> <a href="{% url 'cuenta' %}">Cuenta</a> </li>
+                        <li> <a href="{% url 'account_detail' %}">Cuenta</a> </li>
                       {% else %}
                         <li> <a href="{% url 'Sign Up'%}">Crear cuenta</a> </li>
                       {% endif %}

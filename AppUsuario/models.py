@@ -27,15 +27,15 @@ class Usuario(models.Model):
     user = models.OneToOneField(User, null = True, on_delete = models.CASCADE)
     name = models.CharField(max_length=50)
     email= models.CharField(max_length=50)
-    imagen = models.ImageField(upload_to='images/', null=True, blank=True)
+    imagen = models.ImageField(upload_to='media/avatar/', null=True, blank=True)
     
     def __str__(self):
-        return self.name
+        return (f'user: {self.user}, name: {self.name}, email: {self.email}, imagen: {self.imagen}')
 
 class Avatar(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='images/', null=True, blank=True)
+    imagen = models.ImageField(upload_to='media/avatar/', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.user}, user'
+        return (f'user: {self.user}, imagen: {self.imagen}')

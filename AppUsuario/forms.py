@@ -27,10 +27,12 @@ class PostearForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
-    imagen = forms.ImageField()
+    
     class Meta:
+
         model = User
         fields = ['username','email','password1','password2']
+        print('Sign Up Form')
         help_texts = {k:'' for k in fields} 
 
 
@@ -49,8 +51,8 @@ class UserEditForm(UserCreationForm):
 class CuentaUsuarioForm(ModelForm):
     
     class Meta:
-        model = Usuario
-        fields =  '__all__'
+        model = User
+        fields = '__all__'
         exclude = [ 'user'] 
 
 class Avatar_Form (forms.Form):

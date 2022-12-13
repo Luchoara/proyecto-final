@@ -20,31 +20,41 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card card-body">
+                <h3 style="text-align: center">Hola {{user.username}}</h3>
                 <hr>
-                <h3 style="text-align: center">Configuracion de cuenta</h3>
-                <hr>
+                
                 <img class="profile-pic" src="{{url}}" alt="">
+                <hr>
                 <a class="btn btn-warning" href="{% url 'index' %}"> &#8592; Volver al Inicio</a>
-                {{request.user.id}}
+            
             </div>
         </div>
         <div class="col-md-9">
             <div class="card card-body">
-                
+                <hr>
+                <h3 style="text-align: center">Configuracion de cuenta</h3>
+                <hr>
                 <form method="get" action="" enctype="multipart/form-data"> {% csrf_token %}
-                
-                    {{user.username}}<br>
-					{{user.last_name}}<br> 
-					{{user.email}}<br>
-                    
-					<img src="{{avatar[0].imagen.url}}" alt="...">
 
-            
+                {%if request.user.is_authenticated%}
+                    
+                        user:  {{user.username}} <hr>
+                        nombre:  {{user.name}} <hr> 
+                        email: {{user.email}} <hr> 
+                        imagen: <img src="{{url}}" alt="...(no tiene una imagen)">
+                    
+                {% endif %}
+
+                <hr> 
                 <input class="btn btn-primary" type="submit" name="Update Information">
                 </form>
+                
+                <img class="profile-pic" src="{{url}}" alt="">
             </div>
         </div>
     </div>
+    
+
 
 
 {% endblock %}
