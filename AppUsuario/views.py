@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PosteoForm, SignUpForm, UserEditForm
 from .models import Posteo, Usuario, Avatar
 from django.urls import reverse_lazy
-from .forms import CuentaUsuarioForm, Avatar_Form
+from .forms import UserCreationForm, Avatar_Form
 
 
 
@@ -158,7 +158,7 @@ class SignUpView(CreateView):
 class AdminLoginView(LoginView):
 
     template_name = 'login.html'
-    success_url = reverse_lazy('index')
+    success_url = ''
     
 
 
