@@ -23,4 +23,5 @@ urlpatterns = [
 
 
     path('test/', views.test, name='test'),
+    
 ]

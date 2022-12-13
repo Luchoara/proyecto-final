@@ -171,6 +171,7 @@ def test(request):
     return render(request,'test.html')
 
 def Cuenta_Detail(request):
+<<<<<<< Updated upstream
     
     usuario = Usuario.objects.all()
 
@@ -188,6 +189,16 @@ def Cuenta_Detail(request):
     
     
 
+=======
+
+    usuario = Usuario.objects.all()
+
+    avatar = Avatar.objects.filter(user=request.user.id)
+
+    url = avatar[0].imagen.url
+
+    return render (request, 'account_detail.html', {'url': url, 'usuario':usuario})
+>>>>>>> Stashed changes
 
 class AvatarView(TemplateView):
 
