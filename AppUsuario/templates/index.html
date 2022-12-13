@@ -91,6 +91,12 @@
                   button:hover {
                     background: #1Db954;
                   }
+                  .profile-pic{
+                    max-width: 200px;
+                    max-height:2    00px;
+                    margin: 0 auto;
+                    border-radius: 50%;
+                }
                 
                 
                 </style>
@@ -151,7 +157,7 @@
                         
                       {% if request.user.is_authenticated %}
                         <li> <a href="{% url 'Logout'%}">Logout</a> </li>
-                       
+                      
                       {% else %}
                         <li> <a href="{% url 'Login'%}">Login</a> </li>
                       
@@ -185,7 +191,8 @@
                   <div class="col-md-12">
                     <div class="text-bg">
                       {% if request.user.is_authenticated %}
-                      <img src="{{url}}" alt="">
+                    
+                      <img class="profile-pic" src="{{url}}" alt="">
                       <h1>Hola {{user.username}} como te va? </h1>
                       <p>Si deseas deslogearte haz click aqui! </p>
                       <li> <a href="{% url 'Logout'%}">Logout</a> </li>

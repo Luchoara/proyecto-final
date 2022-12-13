@@ -6,7 +6,6 @@ urlpatterns = [
     
 
     path('',views.mostrar_index, name='index'),
-    path('login_index', views.login_index, name='logIndex'),
     
     path('crear_post/', views.crear_post, name='crear'),
     path('buscador/', views.buscador, name='buscar'),
@@ -21,7 +20,7 @@ urlpatterns = [
     path('editar_usuario/', views.editar_usuario, name='Editar usuario'),
     path('about/', views.about, name='About'),
     path('account_detail/', views.Cuenta_Detail, name='cuenta'),
-    #path('account_detail/<pk>', views.CuentaDetailView.as_view(), name='Cuenta'),
+
 
     path('test/', views.test, name='test'),
     

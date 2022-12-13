@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PosteoForm, SignUpForm, UserEditForm
-from .models import Posteo, Usuario
+from .models import Posteo, Usuario, Avatar
 from django.urls import reverse_lazy
 from .forms import CuentaUsuarioForm, Avatar_Form
 
@@ -16,24 +16,17 @@ from .forms import CuentaUsuarioForm, Avatar_Form
 # Create your views here.
 def mostrar_index(request):
 
-    return render(request, 'index.html')
-
-def login_index(request):
-
-    avatar = Usuario.objects.filter(user=request.user.id)
+    avatar = Avatar.objects.filter(user=request.user.id)
 
     if avatar.exists():
 
-            url = avatar[0].imagen.url #hay un problema aqui
-
+            url = avatar[0].imagen.url
+            print('usuarioExiste')
     else:
 
             url = None
 
-    return render(request,'index.html', {'url': url})
-
-
-
+    return render(request, 'index.html', {'url': url})
 
 
 @login_required
@@ -193,48 +186,64 @@ def Cuenta_Detail(request):
 
 
 
-#def add_avatar(request):
+def add_avatar(request):
 
-    #if request.method == 'POST':
+    if request.method == 'POST':
 
-        #miAvatar = Avatar_Form(request.POST, request.FILES)
+        miAvatar = Avatar_Form(request.POST, request.FILES)
 
-        # if miAvatar.is_valid():
+        if miAvatar.is_valid():
 
-            #usuario = request.user
+            usuario = request.user
 
-            #avatar = Usuario.objects.filter(user=usuario)
+            avatar = Usuario.objects.filter(user=usuario)
 
-            #file = miAvatar.cleaned_data
+            file = miAvatar.cleaned_data
 
-            #if len(avatar) > 0:
+            if len(avatar) > 0:
 
-                #avatar = avatar[0]
-                #avatar.imagen = file['img']
-                #avatar.save()
+                avatar = avatar[0]
+                avatar.imagen = file['img']
+                avatar.save()
 
-                #avatar = Usuario.objects.filter(user=request.user)
+                avatar = Usuario.objects.filter(user=request.user)
 
-                #img = avatar[0].imagen.url
+                img = avatar[0].imagen.url
 
-            #else:
+            else:
 
-                #avatar = usuario(user=usuario, imagen=miAvatar.cleaned_data['img'])
-                #avatar.save()
+                avatar = usuario(user=usuario, imagen=miAvatar.cleaned_data['img'])
+                avatar.save()
 
-                #img = None
+                img = None
 
-        #return render(request, 'AppBlog/templates/AppBlog/inicio.html', {'img':img})
-        #return redirect('account_detail.html')
-
-    #else:
-
-        # = Avatar_Form()
-
-        #img = None
+        return render(request, 'index.html', {'img':img})
         
-        #return render(request, 'addimagen.html', {'miAvatar': miAvatar, 'img': img}) #
+        return redirect('account_detail.html')
+
+    else:
+
+        miAvatar = Avatar_Form()
+
+        img = None
+        
+        return render(request, 'add_imagen.html', {'miAvatar': miAvatar, 'img': img}) #
 
 
+def ver_avatar(request):
 
+    if request.GET.get('imagen', False):
 
+        avatar = Avatar.objects.filter(user=request.user)
+
+        if len(avatar) >= 0:
+            
+                img = avatar[0].imagen.url
+
+        else:
+
+                img = None
+
+        return render(request, 'add_imagen.html', {'img':img})
+    else:
+        print('no se ve')

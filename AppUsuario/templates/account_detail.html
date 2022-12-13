@@ -23,9 +23,9 @@
                 <hr>
                 <h3 style="text-align: center">Configuracion de cuenta</h3>
                 <hr>
-                <img class="profile-pic" src="{{request.user.Usuario.imagen.url}}" >
+                <img class="profile-pic" src="{{url}}" alt="">
                 <a class="btn btn-warning" href="{% url 'index' %}"> &#8592; Volver al Inicio</a>
-            
+                {{request.user.id}}
             </div>
         </div>
         <div class="col-md-9">
@@ -34,9 +34,10 @@
                 <form method="get" action="" enctype="multipart/form-data"> {% csrf_token %}
                 
                     {{user.username}}<br>
-					{{user.last_name}}<br>
+					{{user.last_name}}<br> 
 					{{user.email}}<br>
-					<img src="{{usuario.imagen.url}}" alt="...">
+                    
+					<img src="{{avatar[0].imagen.url}}" alt="...">
 
             
                 <input class="btn btn-primary" type="submit" name="Update Information">

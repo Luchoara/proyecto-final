@@ -1,4 +1,4 @@
-{% extends 'Base.html' %}
+{% extends 'test.html' %}
 
 {% load static %}
 
@@ -6,18 +6,15 @@
 
 <div class="container mt-5">
 
-    <form  method="post" class="form-group mb-5" style="text-align: justify" enctype="multipart/form-data">
-
-        {% csrf_token %}
-
-        <table class="table">
+    <form  method="get" class="form-group mb-5" style="text-align: justify" enctype="multipart/form-data"> {% csrf_token %}
 
         {{miAvatar.as_p}}
-
-        </table>
-        <p></p>
+        
+        <p>{{''}}</p>
+        <p>{{img}}</p>
+        <p>{{''}}</p>
         <input type="submit" value="Guardar cambios" class="btn btn-primary btn-sm">
-        <a class="btn btn-primary btn-sm" href="{% url 'AppUsers:Profile' %}">Cancelar</a>
+        <a class="btn btn-primary btn-sm" href="{% url 'index' %}">Cancelar</a>
 
     </form>
 </div>

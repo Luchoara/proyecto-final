@@ -124,13 +124,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'logIndex'
+LOGIN_REDIRECT_URL = 'Login'
 LOGOUT_REDIRECT_URL = 'index'
 LOGIN_URL = 'Login'
 
 
-MEDIA_URL ='/images/'
-STATICFILES_DIRS = [ os.path.join(BASE_DIR , 'AppUsuario/static')]
+MEDIA_URL ='/media/'
 
-MEDIA_ROOT =  os.path.join(BASE_DIR , 'static/images')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR , 'static/')]
+
+MEDIA_ROOT =  os.path.join(BASE_DIR , 'media')
 
