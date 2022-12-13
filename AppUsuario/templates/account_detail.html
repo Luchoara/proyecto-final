@@ -23,7 +23,7 @@
                 <hr>
                 <h3 style="text-align: center">Configuracion de cuenta</h3>
                 <hr>
-                <img class="profile-pic" src="{{request.user.Avatar.imagen.url}}" >
+                <img class="profile-pic" src="{{request.user.Usuario.imagen.url}}" >
                 <a class="btn btn-warning" href="{% url 'index' %}"> &#8592; Volver al Inicio</a>
             
             </div>
@@ -31,12 +31,12 @@
         <div class="col-md-9">
             <div class="card card-body">
                 
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="get" action="" enctype="multipart/form-data"> {% csrf_token %}
                 
                     {{user.username}}<br>
 					{{user.last_name}}<br>
 					{{user.email}}<br>
-					{{user.Avatar}}<br>
+					<img src="{{usuario.imagen.url}}" alt="...">
 
             
                 <input class="btn btn-primary" type="submit" name="Update Information">

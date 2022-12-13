@@ -20,8 +20,8 @@ urlpatterns = [
     path('Logout/', views.AdminLogoutView.as_view(), name='Logout'),
     path('editar_usuario/', views.editar_usuario, name='Editar usuario'),
     path('about/', views.about, name='About'),
-    path('cuenta/', views.accountSettings, name='Cuenta'),
-    path('account_detail/', views.account_detail, name='account_detail'),
+    path('account_detail/', views.Cuenta_Detail, name='cuenta'),
+    #path('account_detail/<pk>', views.CuentaDetailView.as_view(), name='Cuenta'),
 
     path('test/', views.test, name='test'),
     
