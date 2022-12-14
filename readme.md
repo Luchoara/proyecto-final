@@ -8,18 +8,20 @@ Proyecto de desarollo de una pagina web por medio de Django con la utilizacion d
 Pre-requisitos 📋 Tener instalado VScode o algun otro editor de codigo.
 
 ## Contenidos:
-1. [General Info](#general-info)
-2. [Gracias](#gracias)
-3. [Installation](#na)
-4. [Gracias](#Gracias)
-5. [FAQs](#faqs)
+1. [Instalaciones](#instalaciones)
+2. [Ingresar](#ingresar)
+3. [Web](#web)
+4. [Nosotros](#nosotros)
+5. [Autores](#autores)
 
-# Instalaciónes (en consola)
+## Instalaciones
 
-###  Crear entorno virtual: (en el directorio del proyecto)
+#  Crear entorno virtual: (en el directorio del proyecto)
     - $ python3 -m venv venv
     - $ source venv/bin/activate
     - $ (venv) python -V
+
+
 ### instalar Django: 
     - pip instal Django 
     - Para verificar ingresa:  
@@ -27,24 +29,47 @@ Pre-requisitos 📋 Tener instalado VScode o algun otro editor de codigo.
         django.VERSION
         (deberia salir la version de Django instalada)
 
+        
+
 ### instalar Pillow: #
     - pip instal pillow 
-    
+
+
+### Crear un Superuser: #
+    - python manage.py createsuperuser ()
+        -username
+        -email
+        -password
+        -password_confirmations
+        )
+
 
 ## Correr el proyecto 🚀 #
 
     - cd ../proyecto-final
     - phyton manage.py runserver
 
+
 ## Ingresar
+
+## Ingresar a la web
 
     acceder a la ip generada, ej: ' http://127.0.0.1:8000/ '
 
+### Ingresar al Superuser:
+
+    ' http://127.0.0.1:8000/admin '
+
+## Web
+
 ## Dentro de la Web:
 
+    - crear usuario
+    - crear post
+    - modificar usuario
+    - modificar post
+    - eliminar post
     
-# Gracias
-.
 
 ## Construido
 
@@ -52,12 +77,12 @@ Pre-requisitos 📋 Tener instalado VScode o algun otro editor de codigo.
     Django
     Pillow
 
+## Nosotros
 
-Autores ✒️ Arago Luis - Lovato Maximiliano
+    Somos un grupo de dos personas estudiantes de Python en CoderHouse y esta es la pagina web del proyecto final
 
 
-## General Info
-***
-Write down the general informations of your project. It is worth to always put a project status in the Readme file. This is where you can add it. 
-### Screenshot
+## Autores
+
+    Aragon Luis - Lovato Maximiliano
 
