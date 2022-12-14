@@ -171,25 +171,6 @@ def test(request):
     return render(request,'test.html')
 
 def Cuenta_Detail(request):
-<<<<<<< Updated upstream
-    
-    usuario = Usuario.objects.all()
-
-    avatar = Avatar.objects.filter(user=request.user.id)
-
-    if avatar.exists():
-
-            url = avatar[0].imagen.url
-            print('usuarioExiste')
-    else:
-
-            url = None
-
-    return render(request, 'account_detail.html', {'usuario': usuario, 'url': url})
-    
-    
-
-=======
 
     usuario = Usuario.objects.all()
 
@@ -198,7 +179,6 @@ def Cuenta_Detail(request):
     url = avatar[0].imagen.url
 
     return render (request, 'account_detail.html', {'url': url, 'usuario':usuario})
->>>>>>> Stashed changes
 
 class AvatarView(TemplateView):
 
