@@ -6,6 +6,8 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from AppUsuario import urls
 from .forms import PosteoForm, SignUpForm, UserEditForm
 from .models import Posteo, Usuario, Avatar
 from django.urls import reverse_lazy
@@ -170,15 +172,28 @@ def test(request):
 
     return render(request,'test.html')
 
+def buscar_url_avatar(user):
+    avatares = Avatar.objects.filter(user=user)
+    if avatares.exists():
+        
+        if avatares.first().imagen:
+            return avatares.first().imagen.url
+        else:
+            
+            return None
+
+    
+    return None
+
 def Cuenta_Detail(request):
 
     usuario = Usuario.objects.all()
 
     avatar = Avatar.objects.filter(user=request.user.id)
 
-    url = avatar[0].imagen.url
+    #url = avatar[0].imagen.url
 
-    return render (request, 'account_detail.html', {'url': url, 'usuario':usuario})
+    return render (request, 'account_detail.html', {'url': urls, 'usuario':usuario})
 
 class AvatarView(TemplateView):
 
@@ -246,3 +261,4 @@ def ver_avatar(request):
         return render(request, 'add_imagen.html', {'img':img})
     else:
         print('no se ve')
+
