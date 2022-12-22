@@ -21,7 +21,4 @@ urlpatterns = [
     path('about/', views.about, name='About'),
     path('account_detail/', views.Cuenta_Detail, name='account_detail'),
 
-
-    path('test/', views.test, name='test'),
-    
 ]

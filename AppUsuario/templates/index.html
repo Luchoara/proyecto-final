@@ -176,99 +176,81 @@
     
     <!-- end header -->
     <section class="slider_section">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-
-            <div class="container">
-              <div class="carousel-caption">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-bg">
-                      {% if request.user.is_authenticated %}
-                    
-                      <img class="profile-pic" src="{{url}}" alt="">
-                      <h1>Hola {{user.username}} como te va? </h1>
-                      <p>Si deseas deslogearte haz click aqui! </p>
-                      <li> <a href="{% url 'Logout'%}">Logout</a> </li>
-                      {% else %}
-                    
-                      <span>La web</span>
-                      <h1>de musica para vos</h1>
-                      <p>Esta es una web diseñada para dejar al alcance de tus manos lo que necesis para tu musica</p>
-                      <li> <a href="{% url 'Login'%}">Login</a> </li>
-                      {% endif %}
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="text-bg">
+                            {% if request.user.is_authenticated %}
+                            <img class="profile-pic" src="{{url}}" alt="">
+                            <h1>Hola {{user.username}} como te va? </h1>
+                            <p>Si deseas deslogearte haz click aqui! </p>
+                            <li> <a href="{% url 'Logout'%}">Logout</a> </li>
+                            {% else %}
+                            <span>La web</span>
+                            <h1>de musica para vos</h1>
+                            <p>Esta es una web diseñada para dejar al alcance de tus manos lo que necesis para tu musica</p>
+                            <li> <a href="{% url 'Login'%}">Login</a> </li>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-          <div class="carousel-item">
-
-            <div class="container ">
-              <div class="carousel-caption">
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-bg">
-                      <span>La web</span>
-                      <h1>de musica para vos</h1>
-                      <p>Haz click en los botones para crear algun posteo o ver los posteos existentes</p>
-                      
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="carousel-item">
-
-            <div class="container">
-              <div class="carousel-caption ">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-bg">
-                      <span>La web</span>
-                      <h1>de musica para vos</h1>
-                      <p>y algo más..</p>
-                      
+              
+                <div class="carousel-item">
+                  <div class="container ">
+                    <div class="carousel-caption">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="text-bg">
+                            <span>La web</span>
+                            <h1>de musica para vos</h1>
+                            <p>Haz click en los botones para crear algun posteo o ver los posteos existentes</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                
-              </div>
-            </div>
-          </div>
+                <div class="carousel-item">
+                  <div class="container">
+                    <div class="carousel-caption ">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="text-bg">
+                            <span>La web</span>
+                            <h1>de musica para vos</h1>
+                            <p>y algo más..</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div> 
+              
+        </div>  
         
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </a>
-    
+    </section>
       
-      
-    
-  </div>
-    
-  
-
-</section>
-</div>
-</header>
+  </header>
 
 
 

@@ -5,7 +5,7 @@ import datetime
 from django.forms import ModelForm
 from django import forms
 
-from AppUsuario.models import Usuario
+from AppUsuario.models import Usuario, Avatar
 
 class PosteoForm(forms.Form):
     
@@ -48,15 +48,26 @@ class UserEditForm(UserCreationForm):
         ]
         help_texts = {k:'' for k in fields} 
 
+
+
 class CuentaUsuarioForm(ModelForm):
     
     class Meta:
         model = User
         fields = '__all__'
-        exclude = [ 'user'] 
-
-class Avatar_Form (forms.Form):
-    imagen = forms.ImageField()
+    
 
 
+
+### tests
+
+class UserForm(ModelForm):
+
+        model = Usuario
+        fields = ['user','email','imagen']
+        widgets = {
+            'user': forms.Textarea(attrs={'class': 'form-control mt-3', 'placeholder':'user'}),
+            'email': forms.Textarea(attrs={'class': 'form-control mt-3', 'placeholder':'email'}),
+            'imagen': forms.ClearableFileInput(attrs={'class': 'form-control-file mt-3'})
+        }
 

@@ -11,11 +11,13 @@ from AppUsuario import urls
 from .forms import PosteoForm, SignUpForm, UserEditForm
 from .models import Posteo, Usuario, Avatar
 from django.urls import reverse_lazy
-from .forms import Avatar_Form, CuentaUsuarioForm
 
-
+## tests
+## endtests
 
 # Create your views here.
+
+## INDEX ##
 def mostrar_index(request):
 
     avatar = Avatar.objects.filter(user=request.user.id)
@@ -30,7 +32,38 @@ def mostrar_index(request):
 
     return render(request, 'index.html', {'url': url})
 
+## Index Base ##
+def base(request):
 
+    return render(request,'base.html')
+
+
+## POSTEOS
+
+## Lista Posts ##
+class PosteoList(ListView):
+    model = Posteo
+    template_name = 'mostrar_post.html'
+
+## Detalle Posts ##
+class PosteoDetail(DetailView):
+    model = Posteo
+    template_name = 'posteo_detalle.html' 
+
+## Borrar Posts ##
+class PosteoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Posteo
+    template_name = 'post_confirm_delete.html' 
+    success_url = '/mostrarpost'
+    
+## Actualizar Posts ##
+class PosteoUpdateView(LoginRequiredMixin, UpdateView):
+    model = Posteo
+    template_name = 'modificar_post.html' 
+    success_url = '/mostrarpost'
+    fields =['titulo', 'subtitulo','texto','nombre', 'email']
+    
+## Crear Posts ##
 @login_required
 def crear_post(request):
 
@@ -45,7 +78,7 @@ def crear_post(request):
             data = posteo.cleaned_data
 
             
-            posteo  = Posteo (titulo=data['titulo'], texto=data['texto'])
+            posteo  = Posteo(titulo=data['titulo'], texto=data['texto'])
 
             posteo.save()
 
@@ -59,13 +92,7 @@ def crear_post(request):
 
     return render(request,'Posts.html',{'posteo':posteo})
 
-
-#def buscar_post(request):
-
-#    return render(request,'buscador.html')
-
-
-
+## Buscar Posts ##
 def buscador(request):
 
     if request.GET.get('titulo', False):
@@ -80,13 +107,40 @@ def buscador(request):
         respuesta = print('no hay datos')
         
     return render (request, 'buscador.html', {'respuesta':respuesta})
-    
 
-def base(request):
+## USUARIO
 
-    return render(request,'base.html')
+## Log Out ##
+class AdminLogoutView(LogoutView):
 
-    
+    template_name = 'logout.html'
+    success_url = reverse_lazy('index')
+
+## Log In ##
+class AdminLoginView(LoginView):
+
+    template_name = 'login.html'
+    success_url = ''
+
+## Sign Up ##
+class SignUpView(CreateView):
+
+    form_class = SignUpForm
+    success_url = reverse_lazy('index')
+    template_name = "registro.html"
+
+## Detail Account ##
+def Cuenta_Detail(request):
+
+    usuario = Usuario.objects.all()
+
+    avatar = Avatar.objects.filter(user=request.user.id)
+
+    url = avatar[0].imagen.url
+
+    return render (request, 'account_detail.html', {'url': url, 'usuario':usuario})
+
+## User Edit ##
 @login_required
 def editar_usuario(request):
 
@@ -117,148 +171,14 @@ def editar_usuario(request):
             'usuario': usuario
             })
 
+
+
+## ABOUT US ##
+
 def about(request):
 
     return render(request,'about.html')
-    
 
 
-class PosteoList(ListView):
-    model = Posteo
-    template_name = 'mostrar_post.html'
-
-class PosteoDetail(DetailView):
-
-    model = Posteo
-    template_name = 'posteo_detalle.html' 
-
-
-class PosteoDeleteView(LoginRequiredMixin, DeleteView):
-    model = Posteo
-    template_name = 'post_confirm_delete.html' 
-    success_url = '/mostrarpost'
-    
-
-class PosteoUpdateView(LoginRequiredMixin, UpdateView):
-    model = Posteo
-    template_name = 'modificar_post.html' 
-    success_url = '/mostrarpost'
-    fields =['titulo', 'subtitulo','texto','nombre', 'email']
-    
-
-class SignUpView(CreateView):
-
-    form_class = SignUpForm
-    success_url = reverse_lazy('index')
-    template_name = "registro.html"
-
-class AdminLoginView(LoginView):
-
-    template_name = 'login.html'
-    success_url = ''
-    
-
-
-class AdminLogoutView(LogoutView):
-
-    template_name = 'logout.html'
-    success_url = reverse_lazy('index')
-
-
-
-### <----->
-
-def test(request):
-
-    return render(request,'test.html')
-
-def buscar_url_avatar(user):
-    avatares = Avatar.objects.filter(user=user)
-    if avatares.exists():
-        
-        if avatares.first().imagen:
-            return avatares.first().imagen.url
-        else:
-            
-            return None
-
-    
-    return None
-
-def Cuenta_Detail(request):
-
-    usuario = Usuario.objects.all()
-
-    avatar = Avatar.objects.filter(user=request.user.id)
-
-    #url = avatar[0].imagen.url
-
-    return render (request, 'account_detail.html', {'url': urls, 'usuario':usuario})
-
-class AvatarView(TemplateView):
-
-    template_name = 'add_imagen.html'
-
-
-def add_avatar(request):
-
-    if request.method == 'POST':
-
-        miAvatar = Avatar_Form(request.POST, request.FILES)
-
-        if miAvatar.is_valid():
-
-            usuario = request.user
-
-            avatar = Usuario.objects.filter(user=usuario)
-
-            file = miAvatar.cleaned_data
-
-            if len(avatar) > 0:
-
-                avatar = avatar[0]
-                avatar.imagen = file['img']
-                avatar.save()
-
-                avatar = Usuario.objects.filter(user=request.user)
-
-                img = avatar[0].imagen.url
-
-            else:
-
-                avatar = usuario(user=usuario, imagen=miAvatar.cleaned_data['img'])
-                avatar.save()
-
-                img = None
-
-        return render(request, 'index.html', {'img':img})
-        
-        return redirect('account_detail.html')
-
-    else:
-
-        miAvatar = Avatar_Form()
-
-        img = None
-        
-        return render(request, 'add_imagen.html', {'miAvatar': miAvatar, 'img': img}) #
-
-
-def ver_avatar(request):
-
-    if request.GET.get('imagen', False):
-
-        avatar = Avatar.objects.filter(user=request.user)
-
-        if len(avatar) >= 0:
-            
-                img = avatar[0].imagen.url
-
-        else:
-
-                img = None
-
-        return render(request, 'add_imagen.html', {'img':img})
-    else:
-        print('no se ve')
+## tests
 

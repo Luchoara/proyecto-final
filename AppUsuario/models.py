@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+
+## POSTEOS ##
+
+## Posts ##
 class Posteo(models.Model):
     titulo = models.CharField(max_length=90)
     subtitulo = models.CharField(max_length=90)
@@ -15,6 +19,7 @@ class Posteo(models.Model):
     def __str__(self) -> str:
         return (f'titulo: {self.titulo}, subtitulo: {self.subtitulo}, texto: {self.texto}, nombre: {self.nombre}, email: {self.email}, fecha :{self.fecha}')
 
+## Post List ##
 class PosteoList(models.Model):
     titulo = models.CharField(max_length=90)
     subtitulo = models.CharField(max_length=90)
@@ -25,7 +30,6 @@ class PosteoList(models.Model):
 
 class Usuario(models.Model):
     user = models.OneToOneField(User, null = True, on_delete = models.CASCADE)
-    name = models.CharField(max_length=50)
     email= models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='media/avatar/', null=True, blank=True)
     
@@ -34,8 +38,10 @@ class Usuario(models.Model):
 
 class Avatar(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='media/avatar/', null=True, blank=True)
 
-    def __str__(self):
-        return (f'user: {self.user}, imagen: {self.imagen}')
+
+
+### tests
+
