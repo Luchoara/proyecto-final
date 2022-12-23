@@ -67,12 +67,6 @@
 	</style>
 </head>
 
-{% for i in post %}
-
-<li><p style="color: white">posteo de: {{i}} </p></li>
-
-{% endfor %}
-
     <body>
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
@@ -81,11 +75,25 @@
                         <h3 id="form-title">Buscar Post</h3>
                     </div>
                     <div class="d-flex justify-content-center form_container">
-    
-                        <input type = 'text' name ='titulo' id = 'titulo' placeholder="ingrese el titulo">
-    
-                        <input type = 'submit' value= 'Buscar'>
+						<form action="" method="get"> 
+							<input type = 'text' name ='titulo' id = 'titulo' placeholder="titulo">
+
+							<input type = 'submit' value= 'Buscar'>
+						</form>	
+
                     </div>
+							{% if post %}
+								{% for i in post %}
+
+								<li><p style="color: white">posteo de: {{i}} </p></li>
+
+								{% endfor %}
+							{% else %}
+								
+									<p>Ingrese el titulo</p>
+
+							{% endif %}
+
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
                             Se confundio?, vuelva al:<a href="{% url 'index' %}" class="ml-2">Inicio</a>
