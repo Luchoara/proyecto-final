@@ -23,7 +23,7 @@
                 <h3 style="text-align: center">Hola {{user.username}}</h3>
                 <hr>
                 
-                <img class="profile-pic" src="{{url}}" alt="">
+                <img class="profile-pic" src="{{avatar}}" alt="">
                 <hr>
                 <a class="btn btn-warning" href="{% url 'index' %}"> &#8592; Volver al Inicio</a>
             
@@ -35,16 +35,13 @@
                 <h3 style="text-align: center">Configuracion de cuenta</h3>
                 <hr>
                 <form method="get" action="" enctype="multipart/form-data"> {% csrf_token %}
-                
 
-                <hr> 
-                </form>
                 Nombre: {{user.username}}<br>
                 Email: {{user.email}}<br>
-                usuario name: {{usuario.name}}<br> 
-                Imagen: <img class="profile-pic" src="{{url}}" alt="">
+            
+                <img class="profile-pic" src="{{avatar}}" alt="">
                 
-                
+                </form>
             </div>
         </div>
     </div>

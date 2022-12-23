@@ -25,7 +25,7 @@ def mostrar_index(request):
     if avatar.exists():
 
             url = avatar[0].imagen.url
-            print('usuarioExiste')
+
     else:
 
             url = None
@@ -134,11 +134,18 @@ def Cuenta_Detail(request):
 
     usuario = Usuario.objects.all()
 
-    avatar = Avatar.objects.filter(user=request.user.id)
+    imagen = Avatar.objects.filter(user=request.user.id)
 
-    url = avatar[0].imagen.url
+    if imagen.exists():
 
-    return render (request, 'account_detail.html', {'url': url, 'usuario':usuario})
+        avatar = imagen[0].imagen.url
+    else:
+
+            avatar = None
+
+    return render (request, 'account_detail.html', {'avatar': avatar, 'usuario':usuario})
+
+
 
 ## User Edit ##
 @login_required
