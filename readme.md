@@ -2,9 +2,6 @@
 
 # Proyecto creado por Maximiliano Lovato y Luis Aragon
 
-## Video: 
-https://drive.google.com/file/d/1fQg54ogx22y295E-xJ5AteH7w7ZXnh1e/view?usp=share_link
-
 Proyecto de desarollo de una pagina web por medio de Django con la utilizacion de plantillas en HTML
 
 Pre-requisitos 📋 Tener instalado VScode o algun otro editor de codigo.
